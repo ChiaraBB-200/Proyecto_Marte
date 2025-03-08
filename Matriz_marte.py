@@ -1,6 +1,6 @@
 import numpy as np
 
-mars_map = np.load('mars_map.npy')
+mars_map = np.load('Data/mars_map.npy')
 nr, nc = mars_map.shape
 print(f"Dimensiones del mapa: {nr} filas x {nc} columnas")
 
