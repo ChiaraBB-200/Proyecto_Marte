@@ -1,12 +1,15 @@
 import numpy as np
 import heapq
+import time
 
-mars_map = np.load('data/mars_map.npy')
+from Pruebas_Algoritmos.BFS_search import end_time
+
+mars_map = np.load('/Users/danteespinosa/PycharmProjects/Proyecto_Marte/Data/mars_map.npy')
 nr, nc = mars_map.shape
 print(f"Dimensiones del mapa: {nr} filas x {nc} columnas")
 # Coordenadas en metros (Dadas en la actividad)
-start_x, start_y = 2850, 6400 
-goal_x, goal_y = 3150, 6800
+start_x, start_y = 2850, 6400
+goal_x, goal_y = 10850, 4400
 
 # Coordenadas a índices
 def coordenadas_a_indices(x, y, nr, escala):
@@ -19,6 +22,8 @@ start = coordenadas_a_indices(start_x, start_y, nr, escala)
 goal = coordenadas_a_indices(goal_x, goal_y, nr, escala)
 
 print(f"Punto de inicio: {start}, Punto de fin: {goal}")
+
+start_time = time.time()
 
 def a_star(mars_map, start, goal, max_height_diff):
     def heuristic(a, b):
@@ -74,4 +79,10 @@ def calcular_distancia_recorrida(path, escala):
 if path_a_star:
     distancia = calcular_distancia_recorrida(path_a_star, escala)
     print(f"Distancia recorrida por A*: {distancia:.2f} metros")
+
+end_time = time.time()
+
+diff = end_time - start_time
+
+print(f"El tiempo de el algoritmo es {diff:.2f} segundos.")
     
